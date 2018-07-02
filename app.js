@@ -18,7 +18,13 @@ app.use(serve(path.join(__dirname, '/public')))
 
 // views
 app.use(views(path.join(__dirname, 'view'), {
-  map: { html: 'nunjucks' }
+  <%_ if (view === 'nunjucks') { _%>
+  extension: 'nunjucks'
+  <%_ } else if (view === 'pug') { _%>
+  extension: 'pug'
+  <%_ } else if (view === 'ejs') { _%>
+  extension: 'ejs'
+  <%_ } _%>
 }))
 
 // error
